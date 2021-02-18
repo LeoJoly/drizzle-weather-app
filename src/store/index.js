@@ -1,15 +1,19 @@
 // == Package imports
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // == Local imports
 // reducer
 import rootReducer from '../reducers';
+// middlewares
+import searchMw from '../middlewares/searchMw';
 
 // == Store
 const store = createStore(
   rootReducer,
-  composeWithDevTools(),
+  composeWithDevTools(
+    applyMiddleware(searchMw),
+  ),
 );
 
 export default store;
