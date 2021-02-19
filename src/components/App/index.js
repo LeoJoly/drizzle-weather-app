@@ -1,8 +1,15 @@
+// == Package imports
 import React from 'react';
+
+// == Local imports
+// components
+import SearchBar from '../SearchBar';
 
 const App = () => {
   return (
-    <div>Hi! I'm your beautifull app</div>
+    <div className="app">
+      <SearchBar />
+    </div>
   );
 };
 
