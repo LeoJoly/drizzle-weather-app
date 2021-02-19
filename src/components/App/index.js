@@ -3,12 +3,14 @@ import React from 'react';
 
 // == Local imports
 // components
+import Home from '../Home';
 import SearchBar from '../SearchBar';
 
 const App = () => {
   return (
     <div className="app">
-      <SearchBar />
+      <Home />
+      {/* <SearchBar /> */}
     </div>
   );
 };
