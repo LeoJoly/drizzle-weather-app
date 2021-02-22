@@ -1,0 +1,55 @@
+.header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 72px;
+  background-color: $color;
+  box-shadow: 0 0 30px $color-fnt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &__container {
+    width: 85vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+      width: 120px;
+      height: fit-content;
+  
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  
+    &__btn {
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-alt;
+      border: none;
+      border-radius: 9999px;
+      color: $color-bright;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: .3s ease-in-out;
+
+      p {
+        margin-right: .3rem;
+      }
+
+      &__icon {
+        font-size: 1.3rem;
+      }
+
+      &:hover {
+        background-color: $color-dark;
+      }
+    }
+  }
+}

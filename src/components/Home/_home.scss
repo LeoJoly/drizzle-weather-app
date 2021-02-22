@@ -1,0 +1,76 @@
+.home {
+  min-height: calc(100vh - 72px);
+  background-image: url('../../assets/images/background-desktop.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $color-bright;
+
+    &__intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__wlcm {
+        display: block;
+        text-align: center;
+      }
+
+      &__logo {
+        width: 600px;
+        height: fit-content;
+        margin: 2rem 0;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      &__desc {
+        display: block;
+        width: 80%;
+        text-align: center;
+      }
+    }
+
+    &__btn {
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-alt;
+      border: none;
+      border-radius: 9999px;
+      color: $color-bright;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: .3s ease-in-out;
+
+      p {
+        margin-right: .3rem;
+      }
+
+      &__icon {
+        font-size: 1.3rem;
+      }
+
+      &:hover {
+        background-color: $color-dark;
+      }
+    }
+  }
+}

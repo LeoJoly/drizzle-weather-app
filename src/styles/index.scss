@@ -1,0 +1,20 @@
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,900;1,300;1,900&display=swap');
+
+/* --- Variables --- */
+@import './vars';
+
+/* -- Breakpoints -- */
+@import './breakpoints';
+
+/* --- components styles --- */
+@import '../components/Header/header';
+@import '../components/Home/home';
+
+/* --- general styles --- */
+body {
+  background-color: $color-bright;
+  font-family: 'Poppins', sans-serif;
+  color: $color-fnt;
+  font-weight: 400;
+}

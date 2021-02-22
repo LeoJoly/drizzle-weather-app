@@ -1,11 +1,20 @@
+// == Package imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider as StoreProvider } from 'react-redux';
+
+// == Local imports
+import './styles/reset.css';
+import './styles/index.scss';
 import App from './components/App';
+import store from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <StoreProvider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StoreProvider>,
   document.getElementById('root')
 );
