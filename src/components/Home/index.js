@@ -3,7 +3,7 @@ import React from 'react';
 import { HiSearchCircle } from "react-icons/hi";
 
 // == Local imports
-import logoBright from '../../assets/logos/drizzle-logo_bright.svg'
+import logoBright from '../../assets/logos/drizzle-logo_bright.svg';
 
 const Home = () => (
   <main className="home">
