@@ -4,6 +4,7 @@ export const AUTOCOMPLETE = 'AUTOCOMPLETE';
 export const AUTOCOMPLETE_SUCCESS = 'AUTOCOMPLETE_SUCCESS';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const SUGGEST = 'SUGGEST';
+export const TOGGLE = 'TOGGLE';
 
 /* --- actions --- */
 // search
@@ -25,4 +26,8 @@ export const changeField = (value, name) => ({
 export const suggest = (place) => ({
   type: SUGGEST,
   place,
+});
+
+export const toggle = () => ({
+  type: TOGGLE,
 });

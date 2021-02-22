@@ -11,7 +11,7 @@ const Header = () => {
     <header className="header">
       <div className="header__container">
         <div className="header__container__logo">
-          <Link>
+          <Link to="/">
             <img src={logoBright} alt="Drizzle logo" />
           </Link>
         </div>
