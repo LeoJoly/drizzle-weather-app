@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 // == Local imports
 // components
-import Header from '../Header';
+// import Header from '../Header';
 import Home from '../Home';
 import SearchBar from '../SearchBar';
 
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="app">
       <SearchBar />
-      <Header />
+      {/* <Header /> */}
 
       <Route exact path="/">
         <Home />

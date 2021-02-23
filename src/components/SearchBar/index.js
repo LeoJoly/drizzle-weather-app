@@ -1,29 +1,40 @@
 // == Package imports
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // == Local imports
 // logo
 import logoBright from '../../assets/logos/drizzle-logo_bright.svg';
+// animations
+import { closingWindow, openingWindow } from './searchBarAnimations';
 // actions
-import { autocomplete, changeField, searchInit, searchToggle, suggest } from '../../store/actions';
+import { autocomplete, changeField, closeSearch, searchInit, searchToggle, suggest } from '../../store/actions';
 // utils
 import { toggleSearch } from '../../utils';
 
 // == Component
-const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, handleSearchToggle, handleSuggestion, searchInput, searchState }) => {
+const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, handleSearchInit, handleSearchToggle, handleSuggestion, history, searchInput, searchState }) => {
   // refs
   let searchWindow = useRef(null);
+  let revealWindow = useRef(null);
+  let revealWindowBG = useRef(null);
+
+  // tarck page change
+  useEffect(() => {
+    history.listen(() => {
+      handleCloseSearch();
+    });
+  });
 
   // open and close
   useEffect(() => {
     if (searchState.clicked === false) {
       // colse search window
-      searchWindow.style.display = "none";
+      closingWindow(revealWindow, revealWindowBG, searchWindow);
     } else if (searchState.clicked === true || (searchState.clicked === true && searchState.init === null)) {
       // open search window
-      searchWindow.style.display = 'block';
+      openingWindow(revealWindowBG, revealWindow, searchWindow);
     }
   }, [searchState]);
   
@@ -37,12 +48,10 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, hand
     handleSuggestion(place);
   };
 
-  console.log(searchState);
-
   return (
     <div className="searchBar" ref={el => (searchWindow = el)}>
-      <div className="searchBar__secondBackground" />
-      <div className="searchBar__main">
+      <div ref={el => (revealWindowBG = el)} className="searchBar__secondBackground" />
+      <div ref={el => (revealWindow = el)} className="searchBar__main">
         <div className="searchBar__main__header">
           <div className="searchBar__main__header__container">
             <div className="searchBar__main__header__container__logo">
@@ -64,6 +73,7 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, hand
                 onChange={handleOnChange}
                 name="searchInput"
                 type="text"
+                autoComplete="off"
                 placeholder="City name"
                 value={searchInput}
               />
@@ -96,6 +106,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(autocomplete());
   },
 
+  handleCloseSearch: () => {
+    dispatch(closeSearch());
+  },
+
   handleSuggestion: (place) => {
     dispatch(suggest(place));
   },
@@ -111,4 +125,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 const container = connect(mapStateToProps, mapDispatchToProps)(SearchBar);
 
-export default container;
+export default withRouter(container);

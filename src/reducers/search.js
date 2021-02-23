@@ -2,6 +2,7 @@
 import {
   AUTOCOMPLETE_SUCCESS,
   CHANGE_FIELD,
+  CLOSE_SEARCH,
   SEARCH_INIT,
   SEARCH_TOGGLE,
   SUGGEST,
@@ -28,6 +29,15 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         [action.name]: action.value,
+      };
+
+    case CLOSE_SEARCH:
+      return {
+        ...oldState,
+        searchState: {
+          ...oldState.searchState,
+          clicked: false,
+        },
       };
 
     case SUGGEST:
