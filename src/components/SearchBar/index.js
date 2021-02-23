@@ -7,18 +7,18 @@ import { Link } from 'react-router-dom';
 // logo
 import logoBright from '../../assets/logos/drizzle-logo_bright.svg';
 // actions
-import { autocomplete, changeField, suggest, toggle } from '../../store/actions';
+import { autocomplete, changeField, searchInit, searchToggle, suggest } from '../../store/actions';
+// utils
+import { toggleSearch } from '../../utils';
 
 // == Component
-const SearchBar = ({ autocompleteList, handleChangeField, handleSuggestion, handleToggleSearch, searchInput, searchState }) => {
-  const toggleSearch = () => {
-    handleToggleSearch()
-  }
-  
+const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, handleSearchToggle, handleSuggestion, searchInput, searchState }) => {
+  // track field
   const handleOnChange = (e) => {
     handleChangeField(e.target.value, e.target.name);
   };
 
+  // Request auto-suggestion
   const suggestClicked = (place) => {
     handleSuggestion(place);
   };
@@ -36,7 +36,10 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleSuggestion, hand
                 <img src={logoBright} alt="Drizzle logo" />
               </Link>
             </div>
-            <button onClick={toggleSearch} className="searchBar__main__header__container__btn">Close</button>
+            <button
+              onClick={() => {toggleSearch(searchState.init, searchState.clicked, handleSearchInit, handleSearchToggle)}}
+              className="searchBar__main__header__container__btn"
+            >Close</button>
           </div>
         </div>
         <div className="searchBar__main__container">
@@ -83,8 +86,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(suggest(place));
   },
 
-  handleToggleSearch: () => {
-    dispatch(toggle());
+  handleSearchInit: () => {
+    dispatch(searchInit());
+  },
+
+  handleSearchToggle: () => {
+    dispatch(searchToggle());
   },
 });
 
