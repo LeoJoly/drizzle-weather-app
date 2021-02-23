@@ -1,5 +1,5 @@
 // == Package imports
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,20 @@ import { toggleSearch } from '../../utils';
 
 // == Component
 const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, handleSearchToggle, handleSuggestion, searchInput, searchState }) => {
+  // refs
+  let searchWindow = useRef(null);
+
+  // open and close
+  useEffect(() => {
+    if (searchState.clicked === false) {
+      // colse search window
+      searchWindow.style.display = "none";
+    } else if (searchState.clicked === true || (searchState.clicked === true && searchState.init === null)) {
+      // open search window
+      searchWindow.style.display = 'block';
+    }
+  }, [searchState]);
+  
   // track field
   const handleOnChange = (e) => {
     handleChangeField(e.target.value, e.target.name);
@@ -26,7 +40,7 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleSearchInit, hand
   console.log(searchState);
 
   return (
-    <div className="searchBar">
+    <div className="searchBar" ref={el => (searchWindow = el)}>
       <div className="searchBar__secondBackground" />
       <div className="searchBar__main">
         <div className="searchBar__main__header">
