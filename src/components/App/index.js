@@ -4,19 +4,19 @@ import { Route } from 'react-router-dom';
 
 // == Local imports
 // components
-import Header from '../Header';
+// import Header from '../Header';
 import Home from '../Home';
-// import SearchBar from '../SearchBar';
+import SearchBar from '../SearchBar';
 
 const App = () => {
   return (
     <div className="app">
-      <Header />
+      <SearchBar />
+      {/* <Header /> */}
 
       <Route exact path="/">
         <Home />
       </Route>
-      {/* <SearchBar /> */}
     </div>
   );
 };
