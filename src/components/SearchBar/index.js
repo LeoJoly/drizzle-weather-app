@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // == Local imports
 // logo
@@ -48,6 +49,12 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, han
     handleSuggestion(place);
   };
 
+  // handle submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Je suis bien là');
+  };
+
   return (
     <div className="searchBar" ref={el => (searchWindow = el)}>
       <div ref={el => (revealWindowBG = el)} className="searchBar__secondBackground" />
@@ -67,7 +74,7 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, han
         </div>
         <div className="searchBar__main__container">
           <div className="searchBar__main__container__bar">
-            <form className="searchBar__main__container__bar__form">
+            <form onSubmit={handleSubmit} className="searchBar__main__container__bar__form">
               <input
                 className="searchBar__main__container__bar__form__input"
                 onChange={handleOnChange}
@@ -91,6 +98,19 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, han
       </div>
     </div>
   );
+};
+
+// == PropTypes
+SearchBar.propTypes = {
+  autocompleteList: PropTypes.array.isRequired,
+  handleChangeField: PropTypes.func.isRequired,
+  handleCloseSearch: PropTypes.func.isRequired,
+  handleSearchInit: PropTypes.func.isRequired,
+  handleSearchToggle: PropTypes.func.isRequired,
+  handleSuggestion: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  searchInput: PropTypes.string.isRequired,
+  searchState: PropTypes.object.isRequired
 };
 
 // == Container
