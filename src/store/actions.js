@@ -4,6 +4,7 @@ export const AUTOCOMPLETE = 'AUTOCOMPLETE';
 export const AUTOCOMPLETE_SUCCESS = 'AUTOCOMPLETE_SUCCESS';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const CLOSE_SEARCH = 'CLOSE_SEARCH';
+export const HANDLE_GEOLOC = 'HANDLE_GEOLOC';
 export const SEARCH_INIT = 'SEARCH_INIT';
 export const SEARCH_TOGGLE = 'SEARCH_TOGGLE';
 export const SUGGEST = 'SUGGEST';
@@ -27,6 +28,10 @@ export const changeField = (value, name) => ({
 
 export const closeSearch = () => ({
   type: CLOSE_SEARCH,
+});
+
+export const handleGeoloc = () => ({
+  type: HANDLE_GEOLOC,
 });
 
 export const searchInit = () => ({

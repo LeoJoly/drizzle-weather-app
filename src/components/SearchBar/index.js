@@ -12,10 +12,20 @@ import { closingWindow, openingWindow } from './searchBarAnimations';
 // actions
 import { autocomplete, changeField, closeSearch, searchInit, searchToggle, suggest } from '../../store/actions';
 // utils
-import { toggleSearch } from '../../utils';
+import { buildLocationURL, toggleSearch } from '../../utils';
 
 // == Component
-const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, handleSearchInit, handleSearchToggle, handleSuggestion, history, searchInput, searchState }) => {
+const SearchBar = ({
+  autocompleteList,
+  handleChangeField,
+  handleCloseSearch,
+  handleSearchInit,
+  handleSearchToggle,
+  handleSuggestion,
+  history,
+  searchInput,
+  searchState
+}) => {
   // refs
   let searchWindow = useRef(null);
   let revealWindow = useRef(null);
@@ -52,7 +62,6 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, han
   // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Je suis bien là');
   };
 
   return (
@@ -84,7 +93,9 @@ const SearchBar = ({ autocompleteList, handleChangeField, handleCloseSearch, han
                 placeholder="City name"
                 value={searchInput}
               />
-              <button className="searchBar__main__container__bar__form__btn" type="submit">Search</button>
+              <Link to={buildLocationURL(searchInput)}>
+                <button className="searchBar__main__container__bar__form__btn" type="submit">Search</button>
+              </Link>
             </form>
             {!!autocompleteList.length && (
               <ul className="searchBar__main__container__bar__props">
