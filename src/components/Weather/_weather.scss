@@ -1,0 +1,31 @@
+.weather {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  padding-top: 3rem;
+  background-image: url('../../assets/images/background-desktop2.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__container {
+    width: 85vw;
+
+    &__header {
+      color: $color-bright;
+
+      &__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: .5rem;
+      }
+
+      &__position {
+        color: $color-dark;
+      }
+    }
+  }
+}

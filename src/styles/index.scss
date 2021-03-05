@@ -11,10 +11,11 @@
 @import '../components/SearchBar/searchBar';
 @import '../components/Header/header';
 @import '../components/Home/home';
+@import '../components/Weather/weather';
 
 /* --- general styles --- */
 body {
-  background-color: $color-bright;
+  background-color: $color;
   font-family: 'Poppins', sans-serif;
   color: $color-fnt;
   font-weight: 400;

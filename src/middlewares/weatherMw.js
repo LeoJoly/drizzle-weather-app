@@ -26,7 +26,7 @@ const weatherMw = store => next => action => {
           
           const config = {
             method: 'get',
-            url: `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lng}&exclude=minutely&appid=${weatherKey}`
+            url: `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lng}&units=metric&exclude=minutely&appid=${weatherKey}`
           };
 
           // get forecast
