@@ -9,6 +9,7 @@ export const SEARCH_TOGGLE = 'SEARCH_TOGGLE';
 export const SUGGEST = 'SUGGEST';
 
 // Weather
+export const GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
 export const HANDLE_GEOLOC = 'HANDLE_GEOLOC';
 export const HANDLE_GEOLOC_SUCCESS = 'HANDLE_GEOLOC_SUCCESS';
 
@@ -47,12 +48,20 @@ export const suggest = (place) => ({
 });
 
 // Weather
+export const getWeatherSuccess = (current, daily, hourly) => ({
+  type: GET_WEATHER_SUCCESS,
+  current,
+  daily,
+  hourly,
+});
+
 export const handleGeoloc = (slug) => ({
   type: HANDLE_GEOLOC,
   slug
 });
 
-export const handleGeolocSuccess = (position) => ({
+export const handleGeolocSuccess = (position, label) => ({
   type: HANDLE_GEOLOC_SUCCESS,
   position,
+  label,
 });

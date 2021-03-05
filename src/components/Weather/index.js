@@ -10,7 +10,7 @@ import Header from '../Header';
 // actions
 import { handleGeoloc } from '../../store/actions';
 
-const Weather = ({ handleGetData }) => {
+const Weather = ({ handleGetData, label }) => {
   // get weather data from API
   useEffect(() => {
     handleGetData();
@@ -19,7 +19,7 @@ const Weather = ({ handleGetData }) => {
     <>
     <Header />
     <main className="weather">
-      Je suis le composant weather !
+      <h1>{label}</h1>
     </main>
     </>
   );
@@ -28,15 +28,20 @@ const Weather = ({ handleGetData }) => {
 // == Prop-Types
 Weather.propTypes = {
   handleGetData: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 // == Container
+const mapStateToProps = (state) => ({
+  label: state.weather.label,
+});
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleGetData: () => {
     dispatch(handleGeoloc(ownProps.match.params.slug));
   },
 });
 
-const container = connect(null, mapDispatchToProps)(Weather);
+const container = connect(mapStateToProps, mapDispatchToProps)(Weather);
 
 export default withRouter(container);
