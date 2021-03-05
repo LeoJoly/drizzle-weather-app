@@ -7,12 +7,16 @@ import { Route } from 'react-router-dom';
 // import Header from '../Header';
 import Home from '../Home';
 import SearchBar from '../SearchBar';
+import Weather from '../Weather';
 
 const App = () => {
   return (
     <div className="app">
       <SearchBar />
-      {/* <Header /> */}
+
+      <Route exact path="/weather/:slug">
+        <Weather />
+      </Route>
 
       <Route exact path="/">
         <Home />
