@@ -6,7 +6,7 @@ import axios from 'axios';
 import { AUTOCOMPLETE } from '../store/actions';
 import { autocompleteSuccess } from '../store/actions';
 // keys
-import { hereKey } from './apiKeys';
+const hereKey = process.env.REACT_APP_HERE_KEY;
 
 const searchMw = store => next => action => {
   switch (action.type) {
@@ -27,7 +27,7 @@ const searchMw = store => next => action => {
         });
 
       break;
-    }
+    };
 
     default: next(action);
   };

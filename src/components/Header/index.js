@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiSearchCircle } from "react-icons/hi";
+import PropTypes from 'prop-types';
 
 // == Local imports
 // logo
@@ -32,6 +33,13 @@ const Header = ({ searchState, handleSearchInit, handleSearchToggle}) => {
       </div>
     </header>
   );
+};
+
+// == PropTypes
+Header.propTypes = {
+  searchState: PropTypes.object.isRequired,
+  handleSearchInit: PropTypes.func.isRequired,
+  handleSearchToggle: PropTypes.func.isRequired
 };
 
 // == Container

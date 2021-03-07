@@ -8,6 +8,12 @@ export const SEARCH_INIT = 'SEARCH_INIT';
 export const SEARCH_TOGGLE = 'SEARCH_TOGGLE';
 export const SUGGEST = 'SUGGEST';
 
+// Weather
+export const CHANGE_LOADING = 'CHANGE_LOADING';
+export const GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
+export const HANDLE_GEOLOC = 'HANDLE_GEOLOC';
+export const HANDLE_GEOLOC_SUCCESS = 'HANDLE_GEOLOC_SUCCESS';
+
 /* --- actions --- */
 // search
 export const autocomplete = () => ({
@@ -40,4 +46,27 @@ export const searchToggle = () => ({
 export const suggest = (place) => ({
   type: SUGGEST,
   place,
+});
+
+// Weather
+export const changeLoading = () => ({
+  type: CHANGE_LOADING,
+});
+
+export const getWeatherSuccess = (current, daily, hourly) => ({
+  type: GET_WEATHER_SUCCESS,
+  current,
+  daily,
+  hourly,
+});
+
+export const handleGeoloc = (slug) => ({
+  type: HANDLE_GEOLOC,
+  slug
+});
+
+export const handleGeolocSuccess = (position, label) => ({
+  type: HANDLE_GEOLOC_SUCCESS,
+  position,
+  label,
 });

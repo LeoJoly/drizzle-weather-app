@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { HiSearchCircle } from "react-icons/hi";
+import PropTypes from 'prop-types';
 
 // == Local imports
 import logoBright from '../../assets/logos/drizzle-logo_bright.svg';
@@ -11,7 +12,7 @@ import { searchInit, searchToggle } from '../../store/actions';
 import { toggleSearch } from '../../utils';
 
 // == Component
-const Home = ({ searchState, handleSearchInit, handleSearchToggle}) => (
+const Home = ({ searchState, handleSearchInit, handleSearchToggle }) => (
   <main className="home">
     <div className="home__container">
       <div className="home__container__intro">
@@ -32,7 +33,13 @@ const Home = ({ searchState, handleSearchInit, handleSearchToggle}) => (
   </main>
 );
 
-// == Container
+// == PropTypes
+Home.propTypes = {
+  searchState: PropTypes.object.isRequired,
+  handleSearchInit: PropTypes.func.isRequired,
+  handleSearchToggle: PropTypes.func.isRequired
+};
+
 // == Container
 const mapStateToProps = (state) => ({
   searchState: state.search.searchState,
