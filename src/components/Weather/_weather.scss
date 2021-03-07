@@ -13,6 +13,7 @@
 
   &__container {
     width: 85vw;
+    max-width: 1400px;
 
     &__header {
       color: $color-bright;
@@ -27,5 +28,48 @@
         color: $color-dark;
       }
     }
+
+    &__daily {
+      margin-top: 2rem;
+
+      &__forecasts {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow-y: scroll;
+      }
+    }
+  }
+}
+
+.weatherCard {
+  background-color: $color-alt;
+  margin-right: 1rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  color: $color-bright;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+
+  &__date {
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    margin-top: 1rem;
+    font-size: 5rem;
+  }
+
+  &__temp {
+    font-weight: 700;
+  }
+
+  &:hover {
+    background-color: $color-dark;
   }
 }

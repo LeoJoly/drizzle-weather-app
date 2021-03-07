@@ -1,5 +1,5 @@
 // == Package imports
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -10,13 +10,32 @@ import Header from '../Header';
 import WeatherCard from './WeatherCard';
 // actions
 import { changeLoading, handleGeoloc } from '../../store/actions';
+// utils
+import { dateCalculator } from '../../utils';
 
 const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
+  const [ forecasts, setForecasts ] = useState([]);
+  const [ current, setCurrent ] = useState({});
+
   // get weather data from API
   useEffect(() => {
     handleGetData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // process data
+  useEffect(() => {
+    // add date to data
+    const newForecasts = daily.map((day, index) => {
+      const date = dateCalculator(index);
+      day.date = date;
+      return day;
+    });
+
+    setForecasts(newForecasts);
+    setCurrent(newForecasts[0]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [daily]);
 
   return (
     <>
@@ -39,8 +58,8 @@ const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
           </section>
           <section className="weather__container__daily">
             <ul className="weather__container__daily__forecasts">
-              {daily.map((day, index)=> {
-                return <li key={day.dt}><WeatherCard key={day.dt} day={day} index={index} /></li>
+              {forecasts.map((day)=> {
+                return <li key={day.date} onClick={() => {setCurrent(day)}}><WeatherCard key={day.dt} day={day} /></li>
               })}
             </ul>
           </section>

@@ -2,21 +2,18 @@
 import React from 'react';
 import dayjs from 'dayjs';
 
-const WeatherCard = ({ day, index }) => {
-  // calculate date
-  const startDate = Date.now();
-  const currentDate = new Date(startDate);
-  currentDate.setDate(currentDate.getDate() + index);
+// == Local imports
+import { iconPaser } from '../../utils';
 
-  day.date = currentDate;
-
+const WeatherCard = ({ day }) => {
+  
   return (
     <article className="weatherCard">
       <p className="weatherCard__date">{dayjs(day.date).format('ddd. D MMM.')}</p>
+      <div className="weatherCard__icon">{iconPaser(day.weather[0].icon)}</div>
+      <p className="weatherCard__temp">{day.temp.day}°C</p>
     </article>
   )
 };
 
 export default WeatherCard;
-
-//dayjs(day.dt).format('ddd')
