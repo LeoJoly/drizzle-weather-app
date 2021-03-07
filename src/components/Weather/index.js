@@ -13,15 +13,17 @@ import { changeLoading, handleGeoloc } from '../../store/actions';
 // utils
 import { dateCalculator } from '../../utils';
 
-const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
+const Weather = ({ daily, handleGetData, isLoading, label, position, slug }) => {
   const [ forecasts, setForecasts ] = useState([]);
   const [ current, setCurrent ] = useState({});
+
+  console.log(slug);
 
   // get weather data from API
   useEffect(() => {
     handleGetData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [slug]);
 
   // process data
   useEffect(() => {
@@ -36,6 +38,8 @@ const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
     setCurrent(newForecasts[0]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [daily]);
+
+  console.log(current);
 
   return (
     <>
@@ -63,6 +67,9 @@ const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
               })}
             </ul>
           </section>
+          <section className="weather__container__forecast">
+
+          </section>
         </div>
       )}
     </main>
@@ -83,11 +90,12 @@ Weather.propTypes = {
 };
 
 // == Container
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   daily: state.weather.daily,
   isLoading: state.weather.isLoading,
   label: state.weather.label,
   position: state.weather.position,
+  slug: ownProps.match.params.slug,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
