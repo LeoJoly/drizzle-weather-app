@@ -39,7 +39,9 @@ const Weather = ({ daily, handleGetData, isLoading, label, position }) => {
           </section>
           <section className="weather__container__daily">
             <ul className="weather__container__daily__forecasts">
-              {daily.map(day => <WeatherCard key={day.dt} day={day} />)}
+              {daily.map((day, index)=> {
+                return <li key={day.dt}><WeatherCard key={day.dt} day={day} index={index} /></li>
+              })}
             </ul>
           </section>
         </div>
