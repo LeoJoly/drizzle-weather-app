@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import Home from '../Home';
 import SearchBar from '../SearchBar';
 import Weather from '../Weather';
+import Footer from '../Footer';
 
 const App = () => {
   return (
@@ -21,6 +22,8 @@ const App = () => {
       <Route exact path="/">
         <Home />
       </Route>
+
+      <Footer />
     </div>
   );
 };
