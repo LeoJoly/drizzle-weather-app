@@ -1,0 +1,38 @@
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: $color-dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 85vw;
+    max-width: 1400px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    @include media ('<tablet') {
+      flex-flow: column;
+      justify-content: flex-start;
+    }
+
+    &__el {
+      text-align: center;
+      @include media ('<tablet') {
+        margin-bottom: .3rem;
+      }
+
+      a {
+        color: $color-bright;
+        font-weight: 700;
+        transition: .3s ease-in-out;
+
+        &:hover {
+          color: $color;
+        }
+      }
+    }
+  }
+}

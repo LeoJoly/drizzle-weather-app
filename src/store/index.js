@@ -7,12 +7,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from '../reducers';
 // middlewares
 import searchMw from '../middlewares/searchMw';
+import weatherMw from '../middlewares/weatherMw';
 
 // == Store
 const store = createStore(
   rootReducer,
   composeWithDevTools(
     applyMiddleware(searchMw),
+    applyMiddleware(weatherMw),
   ),
 );
 

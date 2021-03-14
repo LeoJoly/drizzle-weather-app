@@ -1,0 +1,156 @@
+.searchBar {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+
+  &__secondBackground {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: $color-darker;
+  }
+
+  &__main {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../../assets/images/search-bg_02.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__header {
+      width: 100%;
+      height: 72px;
+      margin-bottom: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      &__container {
+        width: 85vw;
+        max-width: 1400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__logo {
+          width: 120px;
+          height: fit-content;
+      
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      
+        &__btn {
+          padding: 0.5rem 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $color-alt;
+          border: none;
+          border-radius: 9999px;
+          color: $color-bright;
+          font-family: 'Poppins', sans-serif;
+          font-size: 1rem;
+          transition: .3s ease-in-out;
+
+          &:hover {
+            background-color: $color-darker;
+          }
+        }
+      }
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      &__bar {
+        @include media('<tablet') {
+          width: 85vw;
+        }
+
+        &__form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &__input {
+            width: 500px;
+            padding: 0.5rem 1rem;
+            margin-right: .3rem;
+            background-color: $color-bright;
+            border: none;
+            border-radius: 9999px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            color: $color-fnt;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            @include media('<tablet') {
+              width: 100%;
+            }
+
+            &::placeholder {
+              color: $color-dark;
+            }
+          }
+
+          &__btn {
+            padding: 0.5rem 1rem;
+            background-color: $color-alt;
+            border: none;
+            border-radius: 9999px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            color: $color-bright;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: .3s ease-in-out;
+
+            &:hover {
+              background-color: $color-darker;
+            }
+          }
+        }
+
+        &__props {
+          margin-top: .5rem;
+
+          &__el {
+            padding: .5rem 1rem;
+            border-radius: 9999px;
+            color: $color-bright;
+            transition: .3s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $color;
+              color: $color-fnt;
+            }
+          }
+        }
+      }
+    }
+  }
+}

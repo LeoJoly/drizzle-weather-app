@@ -2,10 +2,17 @@
 import {
   AUTOCOMPLETE_SUCCESS,
   CHANGE_FIELD,
-  SUGGEST
+  CLOSE_SEARCH,
+  SEARCH_INIT,
+  SEARCH_TOGGLE,
+  SUGGEST,
 } from '../store/actions';
 
 const initialState = {
+  searchState: {
+    init: false,
+    clicked: null,
+  },
   searchInput: '',
   autocompleteList: [],
 };
@@ -24,12 +31,39 @@ const reducer = (oldState = initialState, action = {}) => {
         [action.name]: action.value,
       };
 
+    case CLOSE_SEARCH:
+      return {
+        ...oldState,
+        searchState: {
+          ...oldState.searchState,
+          clicked: false,
+        },
+      };
+
     case SUGGEST:
       return {
         ...oldState,
         searchInput: action.place,
         autocompleteList: [],
-      }
+      };
+
+    case SEARCH_INIT:
+      return {
+        ...oldState,
+        searchState: {
+          init: null,
+          clicked: true,
+        },
+      };
+
+    case SEARCH_TOGGLE:
+      return {
+        ...oldState,
+        searchState: {
+          ...oldState.searchState,
+          clicked: !oldState.searchState.clicked,
+        },
+      };
 
     default:
       return {

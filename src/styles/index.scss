@@ -8,13 +8,26 @@
 @import './breakpoints';
 
 /* --- components styles --- */
+@import '../components/SearchBar/searchBar';
 @import '../components/Header/header';
 @import '../components/Home/home';
+@import '../components/Weather/weather';
+@import '../components/Footer/footer';
 
 /* --- general styles --- */
 body {
-  background-color: $color-bright;
+  background-color: $color;
   font-family: 'Poppins', sans-serif;
   color: $color-fnt;
   font-weight: 400;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-bottom: .5rem;
 }
