@@ -7,6 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include media('<desktop') {
+    background-image: url('../../assets/images/background-mobile.svg');
+  }
 
   &__container {
     width: 100%;
@@ -16,6 +19,9 @@
     justify-content: center;
     align-items: center;
     color: $color-bright;
+    @include media('<desktop') {
+      max-width: 85vw;
+    }
 
     &__intro {
       display: flex;
@@ -32,6 +38,9 @@
         width: 600px;
         height: fit-content;
         margin: 2rem 0;
+        @include media('<tablet') {
+          width: 85vw;
+        }
 
         img {
           max-width: 100%;

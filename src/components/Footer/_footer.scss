@@ -13,9 +13,16 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+    @include media ('<tablet') {
+      flex-flow: column;
+      justify-content: flex-start;
+    }
 
     &__el {
       text-align: center;
+      @include media ('<tablet') {
+        margin-bottom: .3rem;
+      }
 
       a {
         color: $color-bright;
